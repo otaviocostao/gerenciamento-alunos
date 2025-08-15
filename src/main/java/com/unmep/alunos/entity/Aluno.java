@@ -130,4 +130,12 @@ public class Aluno {
     public void setFaltas(Integer faltas) {
         this.faltas = faltas;
     }
+
+    public Double getMedia() {
+        return media;
+    }
+
+    public void setMedia(Double media) {
+        this.media = media;
+    }
 }

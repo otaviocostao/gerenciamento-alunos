@@ -54,6 +54,8 @@ public class DataLoader implements CommandLineRunner {
             aluno.setNota3(dto.getNota3());
             aluno.setNota4(dto.getNota4());
             aluno.setFaltas(dto.getFaltas());
+            double media = calcularMedia(dto);
+            aluno.setMedia(media);
 
             alunosParaSalvar.add(aluno);
         }
