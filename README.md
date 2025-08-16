@@ -35,6 +35,13 @@ A aplicação foi estruturada seguindo as melhores práticas do ecossistema Spri
 - **Interface Intuitiva:** Exibição clara da situação do aluno (Aprovado/Reprovado) e o motivo da reprovação, quando aplicável.
 
 ## Como rodar a aplicação
+
+### Pré-requisitos
+- JDK 21 ou superior - http://oracle.com/br/java/technologies/downloads/#jdk21-windows
+- Maven 3.9+ - https://maven.apache.org/download.cgi
+
+### Passos
+
   **1 - Clone o repositório**
   
   ```
@@ -62,4 +69,4 @@ A aplicação foi estruturada seguindo as melhores práticas do ecossistema Spri
   
   http://localhost:8080
   
-  (A aplicação redirecionará automaticamente para /alunos)
+  (A aplicação redirecionará automaticamente para a rota /alunos)
