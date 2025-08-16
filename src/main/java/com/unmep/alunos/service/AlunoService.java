@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class AlunoService {
 
-    private final AlunoRepository alunoRepository;
+        private final AlunoRepository alunoRepository;
 
     public AlunoService(AlunoRepository alunoRepository) {
         this.alunoRepository = alunoRepository;
@@ -88,7 +88,7 @@ public class AlunoService {
     // Retorna alunos com faltas menor que um valor
     private Specification<Aluno> faltasMenorQue(int faltas) {
         return (root, query, criteriaBuilder) ->
-                criteriaBuilder.lessThan(root.get("faltas"), faltas);
+                criteriaBuilder.lessThan(root.get("faltas"), faltas + 1);
     }
 
     // Retorna alunos com faltas maior ou igual a um valor
