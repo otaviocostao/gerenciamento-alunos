@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" th:href="@{/style.css}" >
+</head>
+<body>
+
+<header>
+    <h1>Gerenciador de alunos</h1>
+</header>
+
+<h1>Lista de Alunos</h1>
+
+<div class="search-filters-area">
+    <form class="filter-form" th:action="@{/alunos/filtros}" method="get">
+        <input id="input-name" type="text" name="nome" placeholder="Buscar por nome..." th:value="${nomeFiltro}">
+        <input type="number" step="0.1" name="mediaMinima" placeholder="Média mínima" th:value="${mediaMinimaFiltro}">
+        <input type="number" name="faltas" placeholder="Faltas máximas" th:value="${faltasMaximasFiltro}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <div class="preset-buttons">
+        <a th:href="@{/alunos/aprovados}" class="button">Aprovados</a>
+        <a th:href="@{/alunos/reprovados}" class="button">Reprovados</a>
+        <a th:href="@{/alunos}" class="button clear">Limpar Filtros</a>
+    </div>
+
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nome Completo</th>
+        <th>Média Final</th>
+        <th>Faltas</th>
+        <th>Situação</th>
+        <th>Motivo (se reprovado)</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="aluno : ${alunos}">
+        <td th:text="${aluno.primeiroNome} + ' ' + ${aluno.ultimoNome}">Nome do Aluno</td>
+
+
+        <td th:text="${#numbers.formatDecimal(aluno.media, 1, 2)}">8.50</td>
+
+        <td th:text="${aluno.faltas}">3</td>
+
+        <td>
+            <span th:if="${aluno.isAprovado()}" class="aprovado">Aprovado</span>
+            <span th:if="${aluno.isReprovado()}" class="reprovado">Reprovado</span>
+        </td>
+
+        <td th:text="${aluno.getMotivoReprovacao()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
