@@ -47,7 +47,7 @@ public class AlunoService {
             specs.add(mediaMaiorOuIgualA(mediaMinima));
         }
         if (faltas != null) {
-            specs.add(faltasMenorQue(faltas));
+            specs.add(faltasMenorQue(faltas+1));
         }
 
         if (specs.isEmpty()) {
@@ -88,7 +88,7 @@ public class AlunoService {
     // Retorna alunos com faltas menor que um valor
     private Specification<Aluno> faltasMenorQue(int faltas) {
         return (root, query, criteriaBuilder) ->
-                criteriaBuilder.lessThan(root.get("faltas"), faltas + 1);
+                criteriaBuilder.lessThan(root.get("faltas"), faltas);
     }
 
     // Retorna alunos com faltas maior ou igual a um valor
